@@ -1,0 +1,3 @@
+To add data to the plots, simply fill in the template at the top of
+1Dplotter.py and supply an appropriate reader function that reads and
+scales the data. See the GR1D and FLASH examples.
