@@ -12,20 +12,20 @@ import numpy as np
 from smooth import smooth
 
 
-def get_GR1DData():
-    file = "./GR1Ddata/bounce.dat"
+def get_GR1DData(directoryname):
+    file = directoryname+"/bounce.dat"
     tbounce = np.loadtxt(file)
-    file = "./GR1Ddata/GR1Dshock_full.dat"
+    file = directoryname+"/GR1Dshock_full.dat"
     time, rsh  = np.loadtxt(file,usecols=(0,2), unpack=True)
     rsh = rsh/1e5
-    file = "./GR1Ddata/GR1Daccretion.dat"
+    file = directoryname+"/GR1Daccretion.dat"
     time, massaccret  = np.loadtxt(file,usecols=(0,11), unpack=True)
-    file = "./GR1Ddata/GR1D_lums.dat"
+    file = directoryname+"/GR1D_lums.dat"
     time, lnue, lanue, lnux = np.loadtxt(file,usecols=(0,1,2,3), unpack=True)
     lnue = lnue/1.0e51
     lanue = lanue/1.0e51
     lnux = lnux/4.0e51
-    file = "./GR1Ddata/GR1D_aveen.dat"
+    file = directoryname+"/GR1D_aveen.dat"
     time, enue, eanue, enux = np.loadtxt(file,usecols=(0,1,2,3), unpack=True)
     time = time - tbounce
     win = 5

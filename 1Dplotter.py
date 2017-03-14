@@ -10,7 +10,7 @@ mpl.rcParams['legend.fontsize']=16
 mpl.rcParams['legend.frameon']=False
 mpl.rcParams['axes.labelsize']=20
 
-number_of_contributions = 2
+number_of_contributions = 3
 sim_names = range(number_of_contributions)
 plotcolors = range(number_of_contributions)
 time = range(number_of_contributions)
@@ -23,16 +23,20 @@ aveenue = range(number_of_contributions)
 aveeanue = range(number_of_contributions)
 aveenux = range(number_of_contributions)
 
-datax = [-100,-99]
-datay = [-100,-99]
-
-
 cc = 0
 #give a name for the legends
-sim_names[cc] = r"${\tt GR1D}$"
+sim_names[cc] = r"${\tt GR1D-GREP}$"
 plotcolors[cc] = 'k'
 #scalars
-time[cc],rshk[cc],massaccretion[cc],lumnue[cc],lumanue[cc],lumnux[cc],aveenue[cc],aveeanue[cc],aveenux[cc] = dr.get_GR1DData()
+time[cc],rshk[cc],massaccretion[cc],lumnue[cc],lumanue[cc],lumnux[cc],aveenue[cc],aveeanue[cc],aveenux[cc] = dr.get_GR1DData("GR1Ddata")
+
+cc = cc + 1
+#give a name for the legends
+sim_names[cc] = r"${\tt GR1D-GR}$"
+plotcolors[cc] = 'grey'
+#scalars
+time[cc],rshk[cc],massaccretion[cc],lumnue[cc],lumanue[cc],lumnux[cc],aveenue[cc],aveeanue[cc],aveenux[cc] = dr.get_GR1DData("GR1Ddata_GR")
+
 
 cc = cc + 1
 #give a name for the legends
@@ -45,7 +49,8 @@ time[cc],rshk[cc],massaccretion[cc],lumnue[cc],lumanue[cc],lumnux[cc],aveenue[cc
 #cc = cc + 1
 ##give a name for the legends
 #sim_names[cc] = "myCode"
-#real in scalars, must supply reader in datareader.py
+#plotcolors[cc] = 'g'
+##read in scalars, must supply reader in datareader.py
 #time[cc],rshk[cc],massaccretion[cc],lumnue[cc],lumanue[cc],lumnux[cc],aveenue[cc],aveeanue[cc],aveenux[cc] = dr.get_myCodeData()
 
 
@@ -94,8 +99,8 @@ plt.gca().add_artist(legend1)
     
 plt.xlabel("$t_{\mathrm{pb}}$ [s]")
 plt.ylabel(r"Luminosity [10$^{51}$ erg/s]")
-plt.xlim((-0.05,0.5))
-plt.ylim((0.0,80))
+plt.xlim((-0.05,0.55))
+plt.ylim((0.0,90))
 plt.savefig("./plots/lums.pdf")
 
 plt.clf()
